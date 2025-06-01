@@ -49,15 +49,14 @@ public class SearchResultsPage {
             System.out.println("Total products found: " + productTitleList.size());
         }
         softAssert.assertEquals(productTitleList.size(), 5);
-        setGetAllProductsPrices();
+
         softAssert.assertAll();
     }
 
-    public void setGetAllProductsPrices()
-    {
+    public void setGetAllProductsPrices() {
 
         // Find all product title links
-     ArrayList<Integer> productPricesList = new ArrayList<>();
+        ArrayList<Integer> productPricesList = new ArrayList<>();
 
         for (WebElement prices : getAllProductsPrices) {
             String priceText = prices.getText().replace("€", "").trim();
@@ -68,9 +67,17 @@ public class SearchResultsPage {
         }
         // Sort ascending
         Collections.sort(productPricesList);
-System.out.println(productPricesList);
-// Sort descending
-// Collections.sort(productPricesList, Collections.reverseOrder());
+        System.out.println(productPricesList);
 
     }
+
+    public void clickOnProduct(String productName) {
+        for (WebElement product : getAllProductsTitle) {
+            if (product.getText().trim().equalsIgnoreCase(productName)) {
+                product.click();
+                break;
+            }
+        }
+    }
+
 }

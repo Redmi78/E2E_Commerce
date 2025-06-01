@@ -4,5 +4,18 @@ Feature: Search and Add to Cart
     Given I open the PrestaShop demo site
     When I search for "Mug"
     And Click on search button
-    Then I should see search results for "Mug"
-   And Verify all products related to Mugs
+    Then I should see search results for 'Mug'
+
+
+  Scenario Outline: Search for a product and add it to cart with specific quantity
+    Given I open the PrestaShop demo site
+    When I search for products '<Products>'
+    And Click on search button
+    And click on the specific product '<Product Name>'
+    Then select quantity '<Quantity>'
+    And click on the "Add to cart" button
+    Then I should see the product "<Product Name>" in the cart with quantity "<Quantity>"
+
+    Examples:
+      | Products | Quantity | Product Name             |
+      | Mug      | 2        | Mug The Adventure Begins |
