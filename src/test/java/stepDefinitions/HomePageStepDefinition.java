@@ -1,7 +1,9 @@
 package stepDefinitions;
 
 import Pages.HomePage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import utils.Utility;
@@ -19,6 +21,7 @@ WebDriver driver = Utility.getDefaultDriver();
         homePage.clickOnSignIn();
 driver.getTitle();
     }
+
 
 
 }

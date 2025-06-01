@@ -54,7 +54,7 @@ public class RegistrationPageStepDefinition {
                 data.get("Month"),
                 data.get("Year")
         );
-     //   Assert.assertEquals(driver.getTitle(),"invalid test title");
+  driver.getTitle();
     }
 
 

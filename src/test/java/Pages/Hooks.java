@@ -21,7 +21,9 @@ public class Hooks {
         System.out.println("Setting up the test environment...");
         // You can add more setup code here, like initializing WebDriver, etc.
 
-        driver.get("http://www.automationpractice.pl/index.php");
+      //  driver.get("http://www.automationpractice.pl/index.php");
+
+       driver.get("https://demo.prestashop.com/#/en/front");
     }
 
     @After
@@ -32,23 +34,14 @@ public class Hooks {
 
         driver.quit();
     }
-    @AfterStep
+
     public void addScreenShot(Scenario scenario) throws IOException {
-        // This method will run after each step in the scenario
-        System.out.println("A step has been executed.");
-
-        // You can add more code here to log step execution, take screenshots, etc.
-        if(scenario.isFailed()) {
+        if (scenario.isFailed()) {
             System.out.println("The scenario has failed. Taking a screenshot...");
-            // Add code to take a screenshot here
-            // For example, you can use WebDriver's takeScreenshot method
-            TakesScreenshot scrht= (TakesScreenshot) driver;
+            TakesScreenshot scrht = (TakesScreenshot) driver;
             File sourcePath = scrht.getScreenshotAs(OutputType.FILE);
-            byte[] fileContent =FileUtils.readFileToByteArray(sourcePath);
-            scenario.attach(fileContent,"image/png", "image");
-
-        } else {
-            System.out.println("The scenario has passed.");
+            byte[] fileContent = FileUtils.readFileToByteArray(sourcePath);
+            scenario.attach(fileContent, "image/png", "image");
         }
     }
 }
