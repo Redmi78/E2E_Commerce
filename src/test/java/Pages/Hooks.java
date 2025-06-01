@@ -31,8 +31,9 @@ public class Hooks {
         // This method will run after each scenario
         System.out.println("Tearing down the test environment...");
         // You can add more teardown code here, like closing WebDriver, etc.
-
-        driver.quit();
+        if (driver != null) {// Quit WebDriver after the test
+            driver = null; // Reset the driver to avoid reuse
+        }
     }
 
     public void addScreenShot(Scenario scenario) throws IOException {
