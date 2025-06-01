@@ -88,6 +88,10 @@ return  driver;
         return driver;
     }
 
+    public static void resetDriver() {
+        driver = null;
+    }
+
     public static String base64Encode(String value) {
         return java.util.Base64.getEncoder().encodeToString(value.getBytes());
     }
