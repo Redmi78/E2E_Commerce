@@ -63,7 +63,7 @@ public class AddToCartStepDefinition {
 
     }
     @Then("I should see the product {string} in the cart with quantity {string}")
-    public void iShouldSeeTheProductInTheCartWithQuantity(String productName, String quantity) {
+    public void iShouldSeeTheProductInTheCartWithQuantity(String productName, String quantity) throws InterruptedException {
         addToCartPage.validateCheckOutDetails(productName, quantity);
     }
 

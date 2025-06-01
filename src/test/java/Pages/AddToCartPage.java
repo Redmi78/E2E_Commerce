@@ -68,14 +68,17 @@ public class AddToCartPage {
     public void clickOnAddToCartButton() {
         btnAddToCart.click();
     }
-    public void validateCheckOutDetails(String productName,String Quantity){
+    public void validateCheckOutDetails(String productName,String Quantity) throws InterruptedException {
         softAssert.assertEquals(getProductName.getText().toLowerCase(), productName.toLowerCase());
         softAssert.assertEquals(getTxtQuantity.getText(), "Quantity: 2");
 softAssert.assertEquals(productSuccessMessage.getText().replaceAll("[^\\x00-\\x7F]", "").trim(),"Product successfully added to your shopping cart");
 
        System.out.println(driver.findElement(By.xpath("//p[@class='cart-products-count']")).getText());
-        btnProceedToCheckout.click();
+        Thread.sleep(20000);
+       // btnProceedToCheckout.click();
+        driver.findElement(By.xpath("//*[@id='blockcart-modal']/div/div/div[2]/div/div[2]/div/div/a")).click();
         System.out.println(driver.getTitle());
+        Thread.sleep(20000);
         System.out.println(driver.findElement(By.xpath("//*[@id='cart-subtotal-shipping']/span[1]")).getText());
        softAssert.assertAll();
     }
