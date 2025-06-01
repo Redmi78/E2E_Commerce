@@ -5,7 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
         features = "C:\\Users\\ADMIN\\IdeaProjects\\E2E_EcommerceProject\\src\\test\\java\\features\\addToCart.feature",
         glue ={"stepDefinitions","Pages"},
-        plugin = {"pretty",
+        plugin = {"pretty","json:target/cucumber-report/cucumber.json",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
 )
 public class TestNGCucumberRunner extends  AbstractTestNGCucumberTests {
