@@ -68,6 +68,10 @@ public class AddToCartStepDefinition {
     }
 
 
+    @And("Click on proceed to checkout button")
+    public void clickOnProceedToCheckoutButton() {
+        addToCartPage.clickOnProceedToCheckout();
+    }
 }
 
 

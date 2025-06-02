@@ -36,8 +36,10 @@ public class AddToCartPage {
     @FindBy(how = How.XPATH, using = "//h4[@class='modal-title h6 text-sm-center']")
     public WebElement productSuccessMessage;
 
-    @FindBy(how = How.XPATH, using = "//i[@class='material-icons rtl-no-flip']")
+    @FindBy(how = How.XPATH, using = "//a[@class='btn btn-primary']")
     public WebElement btnProceedToCheckout;
+
+
 
     WebDriver driver;
     public AddToCartPage(WebDriver driver) {
@@ -81,6 +83,10 @@ softAssert.assertEquals(productSuccessMessage.getText().replaceAll("[^\\x00-\\x7
         Thread.sleep(20000);
         System.out.println(driver.findElement(By.xpath("//*[@id='cart-subtotal-shipping']/span[1]")).getText());
        softAssert.assertAll();
+    }
+
+    public void clickOnProceedToCheckout() {
+        btnProceedToCheckout.click();
     }
 
 }
