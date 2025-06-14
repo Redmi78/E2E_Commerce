@@ -16,14 +16,20 @@ import utils.Utility;
 import java.time.Duration;
 
 public class AddToCartStepDefinition {
-    AddToCartPage addToCartPage;
     SearchResultsPage searchResultsPage;
-    WebDriver driver = Utility.getDefaultDriver();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+    private WebDriver driver;
+    private AddToCartPage addToCartPage;
+
+
+    public AddToCartStepDefinition() {
+        this.driver = Utility.getDefaultDriver();
+        this.addToCartPage = new AddToCartPage(driver);
+    }
 
     @Given("I open the PrestaShop demo site")
     public void iOpenThePrestaShopDemoSite() throws InterruptedException {
-        addToCartPage = new AddToCartPage(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(addToCartPage.frameLive));
 
     }
@@ -35,7 +41,7 @@ public class AddToCartStepDefinition {
 
     }
 
-   @When("I search for products {string}")
+    @When("I search for products {string}")
     public void searchForSpecificProducts(String products) throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         addToCartPage.enterSearchText(products);
@@ -44,7 +50,7 @@ public class AddToCartStepDefinition {
 
     @Then("click on the specific product {string}")
     public void clickOnTheSpecificProductName(String productNames) throws InterruptedException {
-        searchResultsPage=  new SearchResultsPage(driver);
+        searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.getProductsTitle();
         searchResultsPage.clickOnProduct(productNames);
     }
@@ -62,6 +68,7 @@ public class AddToCartStepDefinition {
         Thread.sleep(20000);
 
     }
+
     @Then("I should see the product {string} in the cart with quantity {string}")
     public void iShouldSeeTheProductInTheCartWithQuantity(String productName, String quantity) throws InterruptedException {
         addToCartPage.validateCheckOutDetails(productName, quantity);

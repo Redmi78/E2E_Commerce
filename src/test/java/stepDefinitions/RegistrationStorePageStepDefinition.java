@@ -23,5 +23,6 @@ public class RegistrationStorePageStepDefinition {
         RegistrationStorePage.ClickOnOrderAsGuest();
         RegistrationStorePage.RadioBtnGenderMale();
         RegistrationStorePage.setUserData("tesr","tesr","test@test.com");
+        System.out.println("User data filled successfully");
     }
 }

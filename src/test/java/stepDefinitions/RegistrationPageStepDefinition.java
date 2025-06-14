@@ -2,20 +2,29 @@ package stepDefinitions;
 
 import Pages.HomePage;
 import Pages.RegistrationPage;
+import Pages.SearchResultsPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import utils.Utility;
 
 import java.util.Map;
 
-import static utils.Utility.driver;
 
 public class RegistrationPageStepDefinition {
-    RegistrationPage registrationPage;
+  private  RegistrationPage registrationPage;
+
+
+    private WebDriver driver;
+
+    public RegistrationPageStepDefinition() {
+        this.driver = Utility.getDefaultDriver();
+        this.registrationPage = new RegistrationPage(driver);
+    }
     @Given("I am on the registration page")
     public void iAmOnTheRegistrationPage() {
 

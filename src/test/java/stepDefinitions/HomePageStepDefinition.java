@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import utils.Utility;
 
-import static utils.Utility.driver;
 
 public class HomePageStepDefinition {
 //static  WebDriver driver;

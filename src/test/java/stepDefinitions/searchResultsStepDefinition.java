@@ -1,14 +1,22 @@
 package stepDefinitions;
 
+import Pages.AddToCartPage;
 import Pages.SearchResultsPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
+import utils.Utility;
 
 
 public class searchResultsStepDefinition {
-SearchResultsPage searchResultsPage;
-WebDriver driver = utils.Utility.getDefaultDriver();
+    private SearchResultsPage searchResultsPage;
+    private WebDriver driver;
+
+    public searchResultsStepDefinition() {
+        this.driver = Utility.getDefaultDriver();
+        this.searchResultsPage = new SearchResultsPage(driver);
+    }
+
     @And("Click on search button")
     public void clickOnSearchButton() {
 
@@ -16,9 +24,9 @@ WebDriver driver = utils.Utility.getDefaultDriver();
 
     @Then("I should see search results for {string}")
     public void iShouldSeeSearchResultsFor(String arg0) throws InterruptedException {
-        searchResultsPage=  new SearchResultsPage(driver);
         searchResultsPage.getProductsTitle();
         searchResultsPage.setGetAllProductsPrices();
+        System.out.println("pages search successfully");
     }
 
     @And("Verify all products related to Mugs")

@@ -14,33 +14,20 @@ import java.io.File;
 import java.io.IOException;
 
 public class Hooks {
-    WebDriver driver = Utility.getDefaultDriver();
-
     @Before
     public void setUp() {
-        // This method will run before each scenario
-        System.out.println("Setting up the test environment...");
-        // You can add more setup code here, like initializing WebDriver, etc.
-
-        //  driver.get("http://www.automationpractice.pl/index.php");
-
+        WebDriver driver = Utility.getDefaultDriver();
         driver.get("https://demo.prestashop.com/#/en/front");
     }
 
     @After
     public void tearDown() {
-        // This method will run after each scenario
-        System.out.println("Tearing down the test environment...");
-        // You can add more teardown code here, like closing WebDriver, etc.
-        WebDriver driver = Utility.getDefaultDriver();
-        if (driver != null) {// Quit WebDriver after the test
-            driver.quit();
-            Utility.resetDriver(); // Reset the driver to avoid reuse
-        }
+        Utility.resetDriver();
     }
 
     @AfterStep
     public void addScreenShot(Scenario scenario) throws IOException {
+        WebDriver driver = Utility.getDefaultDriver();
         if (scenario.isFailed()) {
             try {
                 System.out.println("The scenario has failed. Taking a screenshot...");
@@ -53,4 +40,5 @@ public class Hooks {
             }
         }
     }
+
 }
