@@ -1,5 +1,6 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,14 @@ public class SearchResultsPage {
 
     @FindBy(how = How.CSS, using = "div.product-price-and-shipping > span")
     public List<WebElement> getAllProductsPrices;
+
+    @FindBy(how = How.XPATH, using = "//button[@class='btn-unstyle select-title']")
+    public WebElement dropDown;
+
+    @FindBy(how = How.XPATH, using = "//div[@class='dropdown-menu']//a[@rel='nofollow']")
+    public List<WebElement> dropdownMenu;
+
+    //button[@data-toggle='dropdown']
 
 
     public SearchResultsPage(WebDriver driver) {
@@ -75,6 +84,21 @@ public class SearchResultsPage {
         for (WebElement product : getAllProductsTitle) {
             if (product.getText().trim().equalsIgnoreCase(productName)) {
                 product.click();
+                break;
+            }
+        }
+    }
+
+    public void getSortByDropDownValues(String criteria) throws InterruptedException {
+        dropDown.click();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOfAllElements(dropdownMenu));
+        for (WebElement element : dropdownMenu) {
+            String sortByDropDownValues = element.getText().trim();
+            if (sortByDropDownValues.contains("Price, low to high")) {
+                element.click();
+                element.isSelected();
                 break;
             }
         }

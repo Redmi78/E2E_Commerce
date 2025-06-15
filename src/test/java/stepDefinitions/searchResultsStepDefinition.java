@@ -33,4 +33,10 @@ public class searchResultsStepDefinition {
     public void verifyAllProductsRelatedToMugs() {
     }
 
+    @And("I sort the products by {string}")
+    public void iSortTheProductsBy(String criteria) throws InterruptedException {
+        searchResultsPage.getSortByDropDownValues(criteria);
+    }
+
+
 }

@@ -19,3 +19,17 @@ Feature: Search and Add to Cart
     Examples:
       | Products | Quantity | Product Name             |
       | Mug      | 2        | Mug The Adventure Begins |
+
+
+
+  Scenario: Search for a product and do a sorting
+    Given I open the PrestaShop demo site
+    When I search for "Mug"
+    And Click on search button
+    Then I should see search results for 'Mug'
+    And I sort the products by "Price, low to high"
+
+
+
+
+
