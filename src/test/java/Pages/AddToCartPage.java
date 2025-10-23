@@ -33,7 +33,7 @@ public class AddToCartPage {
     @FindBy(how = How.XPATH, using = "//h6[@class='h6 product-name']")
     public WebElement getProductName;
 
-    @FindBy(how = How.XPATH, using = "//h4[@class='modal-title h6 text-sm-center']")
+    @FindBy(how = How.XPATH, using = "//h4[@id='myModalLabel']")
     public WebElement productSuccessMessage;
 
     @FindBy(how = How.XPATH, using = "//a[@class='btn btn-primary']")
