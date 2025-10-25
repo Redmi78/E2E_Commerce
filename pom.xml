@@ -77,13 +77,9 @@
                 <version>3.5.4</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <file>testNg.xml</file>
+                        <suiteXmlFile>testNg.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <properties>
-                    <!--    <property>
-                            <name>parallel</name>
-                            <value>methods</value>
-                        </property>-->
                         <property>
                             <name>dataproviderthreadcount</name>
                             <value>2</value>
