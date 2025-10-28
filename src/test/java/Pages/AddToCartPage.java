@@ -12,7 +12,7 @@ import org.testng.asserts.SoftAssert;
 public class AddToCartPage {
 
     @FindBy(how = How.XPATH, using = "//iframe[@id='framelive']")
-    public WebElement frameLive;
+    public  WebElement frameLive;
 
 
     @FindBy(how = How.XPATH, using = "//input[@placeholder='Search our catalog']")
