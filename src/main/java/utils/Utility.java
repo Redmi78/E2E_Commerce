@@ -27,15 +27,15 @@ public class Utility {
 
             try {
                 if (USE_GRID) {
-                    System.out.println("🌐 Running test on Selenium Grid: " + GRID_URL);
+                    System.out.println("Running test on Selenium Grid: " + GRID_URL);
                     driver.set(new RemoteWebDriver(new URL(GRID_URL), options));
                 } else {
-                    System.out.println("💻 Running test locally");
+                    System.out.println("Running test locally");
                     WebDriverManager.chromedriver().setup();
                     driver.set(new ChromeDriver(options));
                 }
             } catch (MalformedURLException e) {
-                throw new RuntimeException("❌ Invalid Selenium Grid URL: " + GRID_URL, e);
+                throw new RuntimeException("Invalid Selenium Grid URL: " + GRID_URL, e);
             }
 
             driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
@@ -51,7 +51,7 @@ public class Utility {
             try {
                 webDriver.quit();
             } catch (Exception e) {
-                System.err.println("⚠️ Failed to quit driver: " + e.getMessage());
+                System.err.println("Failed to quit driver: " + e.getMessage());
             } finally {
                 driver.remove(); // remove from ThreadLocal
             }
