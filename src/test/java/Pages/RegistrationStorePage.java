@@ -34,10 +34,20 @@ public class RegistrationStorePage {
 
 
     @FindBy(how = How.XPATH, using = "//input[@name='newsletter' and @type='checkbox']")
-    public WebElement checkboxNewsletter;
+    public WebElement personalNewsletterCheckBox;
 
     @FindBy(how = How.ID_OR_NAME, using = "//input[@name='psgdpr' and @type='checkbox']")
     public WebElement checkBoxpsgdpr;
+
+
+
+
+    @FindBy(how = How.ID_OR_NAME, using = "//input[@name='customer_privacy']")
+    public WebElement customer_privacy;
+
+
+    @FindBy(how = How.XPATH, using = " //button[@data-link-action='register-new-customer']")
+    public WebElement personalInfoContinueBtn;
 
 
     public RegistrationStorePage(WebDriver driver) {
@@ -57,6 +67,14 @@ public class RegistrationStorePage {
         txtLastName.sendKeys(lastName);
         txtEmail.sendKeys(email);
     }
+
+    public void ClickOnPersonalInfoContinueBtn() {
+        personalInfoContinueBtn.click();
+    }
+    public void ClickOnCustomerPrivacyCheckBox() {
+        customer_privacy.click();
+    }
+
 
 
 
