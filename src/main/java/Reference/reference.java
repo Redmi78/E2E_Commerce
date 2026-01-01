@@ -1,5 +1,10 @@
 package Reference;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 public class reference {
     // public static String stack, broswer;
 //public  static  WebDriver driver;
@@ -120,4 +125,21 @@ return  driver;
         return dateFormat.format(currentDatePlusDuration);
     }*/
 
+
+    private static Properties properties = new Properties();
+
+    static {
+        try (FileInputStream fis = new FileInputStream("src/test/resources/configtest_pie.properties")) {
+            properties.load(fis);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to load config.properties: " + e.getMessage());
+        }
+    }
+
+    public static String getProperty(String key) {
+        return properties.getProperty(key);
+    }
 }
+
+
+
