@@ -7,7 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
+
+import java.time.Duration;
 
 public class AddToCartPage {
 
@@ -15,7 +18,7 @@ public class AddToCartPage {
     public  WebElement frameLive;
 
 
-    @FindBy(how = How.XPATH, using = "//input[@placeholder='Search our catalog']")
+    @FindBy(how = How.XPATH, using = "//input[@placeholder='Search products...']")
     public WebElement txtSearchBox;
 
     @FindBy(how = How.XPATH, using = "//span[@class='ui-helper-hidden-accessible']")
@@ -27,17 +30,18 @@ public class AddToCartPage {
     @FindBy(how = How.XPATH, using = "//button[@data-button-action='add-to-cart']")
     public WebElement btnAddToCart;
 
-    @FindBy(how = How.XPATH, using = "//span[@class='product-quantity']")
+    @FindBy(how = How.CSS, using = ".blockcart-modal__quantity")
     public WebElement getTxtQuantity;
 
-    @FindBy(how = How.XPATH, using = "//h6[@class='h6 product-name']")
+    @FindBy(how = How.CSS, using = ".blockcart-modal__name")
     public WebElement getProductName;
 
-    @FindBy(how = How.XPATH, using = "//h4[@id='myModalLabel']")
+    @FindBy(how = How.CSS, using = ".blockcart-modal__title")
     public WebElement productSuccessMessage;
 
     @FindBy(how = How.XPATH, using = "//a[@class='btn btn-primary']")
     public WebElement btnProceedToCheckout;
+
 
 
 
@@ -55,10 +59,13 @@ public class AddToCartPage {
     }
 
     public void enterSearchText(String productName) throws InterruptedException {
-        Thread.sleep(15000);
+       WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+       wait.until(driver -> txtSearchBox.isDisplayed());
 
         txtSearchBox.sendKeys(productName);
         txtSearchBox.submit();
+
+
     }
 
     public void setTxtQuantity(String quantity) {
@@ -73,15 +80,13 @@ public class AddToCartPage {
     public void validateCheckOutDetails(String productName,String Quantity) throws InterruptedException {
         softAssert.assertEquals(getProductName.getText().toLowerCase(), productName.toLowerCase());
         softAssert.assertEquals(getTxtQuantity.getText(), "Quantity: 2");
-softAssert.assertEquals(productSuccessMessage.getText().replaceAll("[^\\x00-\\x7F]", "").trim(),"Product successfully added to your shopping cart");
+softAssert.assertEquals(productSuccessMessage.getText().replaceAll("[^\\x00-\\x7F]", "").trim(),"Added to your cart");
 
-       System.out.println(driver.findElement(By.xpath("//p[@class='cart-products-count']")).getText());
-        Thread.sleep(20000);
-       // btnProceedToCheckout.click();
-        driver.findElement(By.xpath("//*[@id='blockcart-modal']/div/div/div[2]/div/div[2]/div/div/a")).click();
-        System.out.println(driver.getTitle());
-        Thread.sleep(20000);
-        System.out.println(driver.findElement(By.xpath("//*[@id='cart-subtotal-shipping']/span[1]")).getText());
+        btnProceedToCheckout.click();
+      //  driver.findElement(By.xpath("//*[@id='blockcart-modal']/div/div/div[2]/div/div[2]/div/div/a")).click();
+       // System.out.println(driver.getTitle());
+       // Thread.sleep(20000);
+       // System.out.println(driver.findElement(By.xpath("//*[@id='cart-subtotal-shipping']/span[1]")).getText());*/
        softAssert.assertAll();
     }
 

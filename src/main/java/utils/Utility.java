@@ -16,7 +16,7 @@ public class Utility {
     // ThreadLocal ensures each test thread gets its own WebDriver
     private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    private static final String GRID_URL = System.getProperty("gridUrl", "http://localhost:4444/wd/hub");
+    private static final String GRID_URL = System.getProperty("gridUrl", "http://localhost:4444");
     private static final boolean USE_GRID = Boolean.parseBoolean(System.getProperty("useGrid", "false")); // default local
 
     public static WebDriver getDefaultDriver() {

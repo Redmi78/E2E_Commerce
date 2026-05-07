@@ -50,6 +50,7 @@ public class AddToCartStepDefinition {
 
     @Then("click on the specific product {string}")
     public void clickOnTheSpecificProductName(String productNames) throws InterruptedException {
+
         searchResultsPage = new SearchResultsPage(driver);
         searchResultsPage.getProductsTitle();
         searchResultsPage.clickOnProduct(productNames);

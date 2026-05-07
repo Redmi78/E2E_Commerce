@@ -14,4 +14,4 @@ Feature: Proceed to Checkout
 
     Examples:
       | Products | Quantity | Product Name             |
-      | Mug      | 2        | Mug The Adventure Begins |
+      | mug     | 2        | Mug The adventure begins |

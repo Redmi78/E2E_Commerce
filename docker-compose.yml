@@ -3,8 +3,10 @@ version: '3.8'
 services:
   selenium-hub:
     image: selenium/hub:4.29.0
-    container_name: selenium-hub
+    container_name: selenium-hub-1
     ports:
+      - "4442:4442"
+      - "4443:4443"
       - "4444:4444"
 
   chrome-node-1:

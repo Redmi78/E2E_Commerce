@@ -26,7 +26,7 @@ public class Hooks {
                 scenario.attach(screenshot, "image/png", "Failure Screenshot");
             }
         } catch (Exception e) {
-            System.err.println("⚠️ Failed to capture screenshot: " + e.getMessage());
+            System.err.println("Failed to capture screenshot: " + e.getMessage());
         } finally {
             Utility.quitDriver(); // Always quit driver
         }
